@@ -1,0 +1,93 @@
+Q:
+Explain State File Locking?
+
+A: 
+Terraform state file locking is a mechanism that prevents concurrent access to the Terraform state file.
+This is important to avoid conflicts and ensure that infrastructure changes are applied correctly.
+
+Terraform supports two types of state file locking:
+
+- Local locking: 
+This type of locking is used when the Terraform state file is stored locally. 
+Terraform will automatically lock the state file before making any changes.
+- Remote locking:
+This type of locking is used when the Terraform state file is stored remotely.
+Terraform will use a lock server to coordinate access to the state file.
+=============================================================
+Q: What do you understand by a Tainted Resource?
+
+A tainted resource is a Terraform resource that is out of sync with the Terraform configuration. 
+This can happen for a number of reasons, such as if the resource is manually changed outside of Terraform or if there is a problem with the Terraform configuration.
+Terraform will warn you about tainted resources before applying any changes. You can then choose to either ignore the warning or fix the tainted resource.
+=============================================================
+Q:
+How to lock Terraform module versions?
+
+A:
+
+There are two ways to lock Terraform module versions:
+
+1. Using the required_providers block: 
+This block allows you to specify the required versions of all providers used by your Terraform configuration.
+
+2. Using the version block: 
+This block allows you to specify the required version of a specific module.
+It is generally recommended to lock Terraform module versions to avoid breaking changes.
+=============================================================
+
+Q:
+terraform core vs terraform blugins?
+
+=> Terraform Core is the central engine of Terraform that is responsible for managing the Terraform state file, executing Terraform commands, and interacting with providers. 
+Terraform Core is written in Go and is open source.
+=> Primary responsibilities for terraform core:
+
+- IaC: readind and interpolating configuration files and modules. بتعمل اتشك ع الكود بتاعك وتبدء تفسرة وتحولة لكوماندز تقدر تبعتها للبلجنز 
+- resource state management => دى اهم حاجة ف التيرافورم, فكرتها ببساطة ان انت تبقى عارف تحدد فى الكود بتاعك اية اللى اتكريت منة قبل كدة واية اللى لسة متعملوش كريت 
+- constructoin of the resource graph => تقدر تحول الكود الى جراف بيعبر عن الانفراستركشر بتاعتك
+- plan execution.
+- communication with plugins via (RPC).
+-----------------------------------------
+=> Terraform plugins are executable binaries that extend Terraform's capabilities. There are two types of Terraform plugins:
+
+- Provider plugins expose APIs for specific cloud providers, databases, and other infrastructure services.
+- Provisioner plugins execute scripts or commands to provision infrastructure resources.
+
+- Terraform plugins are written in Go and are installed separately from Terraform Core.
+-----------------------------------------
+=> Primary responsibilities for terraform plugins:
+
+- initialization of any included libraries used to make API Calls.
+- Authentication with the infrastructure provider.
+- define resources that map to specific services.
+
+When to use Terraform plugins:
+
+- If you need to add new features or capabilities to Terraform, then you can use Terraform plugins.
+- If you need to use a provider or resource type that is not supported by Terraform Core, then you will need to use a Terraform plugin.
+- If you want to use a Terraform plugin that has been developed by a community member, then you can use Terraform plugins.
+
+Conclusion:
+
+Terraform Core and Terraform plugins are both valuable tools for managing infrastructure as code. 
+Terraform Core provides the core functionality, while Terraform plugins provide additional functionality. The best choice for you will depend on your specific needs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
